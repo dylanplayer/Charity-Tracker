@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}<title>Charity Tracker</title>{% endblock %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Charity Tracker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Partners</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <button>Get Started</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container-fluid">
+        <div class="hero bg-dark">
+            <h1>MAKE A GREATOR IMPACT</h1>
+            <button>Get Started</button>
+        </div>
+        <div class="container indroduction d-flex flex-column align-items-center justify-content-center text-center mr-auto ml-auto mt-5 mb-5">
+            <h2 class="indroduction-title">Our Mission</h2>
+            <p class="indroduction-lead">Many people would love to donate to charities but they don't know where their money is going. The mission of Charity Tracker is to help you track the money you donate.</p>
+            <button>Get Started</button>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-lg-6 gallery-img" id="gallery-img-1" style='height: 60vh; background-image: url({{url_for("static", filename="ocean-cleanup-1.jpeg")}});'></div>
+                <div class="col col-lg-6" style='height: 60vh;'>
+                    <div class="row h-50 gallery-img" id="gallery-img-2" style='background-image: url({{url_for("static", filename="no-kid-hungry.png")}});'></div>
+                    <div class="row h-50 gallery-img" style='background-image: url({{url_for("static", filename="team-trees-1.jpg")}});'></div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid partners">
+            <h2 class="row">Our Partners</h2>
+            <div class="row partner-images">
+                <div class="partner-image" style='background-image: url({{url_for("static", filename="no-kid-hungry.png")}});'></div>
+                <div class="partner-image" style='background-image: url({{url_for("static", filename="team-trees-logo.png")}});'></div>
+                <div class="partner-image" style='background-image: url({{url_for("static", filename="st-jude-logo.jpeg")}});'></div>
+                <div class="partner-image" style='background-image: url({{url_for("static", filename="team-seas-logo.png")}});'></div>
+                <div class="partner-image" style='background-image: url({{url_for("static", filename="red-cross-logo.jpeg")}});'></div>
+            </div>
+            <button class="row">See More</button>
+        </div>
+        <div class="container-fluid benifits">
+            <h2 class="row">Benifits</h2>
+            <div class="row benifits-list">
+                <div class="benifit">
+                    <img src='{{url_for("static", filename="tax.png")}}' class="benifit-icon">
+                    <h3>Get tax information</h3>
+                    <p>Get tax relevant information regarding charitable contributions</p>
+                </div>
+                <div class="benifit">
+                    <img src='{{url_for("static", filename="chart.png")}}' class="benifit-icon">
+                    <h3>Track your impact</h3>
+                    <p>Tack the impact of your donations on the world</p>
+                </div>
+                <div class="benifit">
+                    <img src='{{url_for("static", filename="notify.png")}}' class="benifit-icon">
+                    <h3>Stay updated</h3>
+                    <p>Stay up to date with your favorite charities</p>
+                </div>
+            </div>
+            <button class="row">Get Started</button>
+        </div>
+    </main>
+{% endblock %}
