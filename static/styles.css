@@ -144,7 +144,7 @@ footer ul {
 
 .form {
     width: 300px;
-    height: 300px;
+    height: 350px;
     color: white;
     background-color: #12232E;
     border: 2px transparent;
@@ -152,6 +152,7 @@ footer ul {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 1rem;
 }
 
@@ -162,4 +163,8 @@ footer ul {
     border-radius: 25px;
     padding: .5rem;
     margin: 1rem;
+}
+
+.half-input {
+    width: 35%;
 }
