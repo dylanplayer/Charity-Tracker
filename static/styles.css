@@ -9,7 +9,7 @@ body {
     margin-right: 1rem;
 }
 
-button {
+button, .btn {
     color: white !important;
     background-color: #4DA8DA;
     font-weight: bold;
@@ -19,7 +19,7 @@ button {
     margin-top: .3em;
 }
 
-button:hover {
+button:hover, .btn:hover {
     transform: scale(1.02);
     cursor: pointer;
 }
@@ -43,10 +43,123 @@ button:hover {
 }
 
 .container-fluid {
-    padding: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 
 .gallery-img {
     background-position: center;
     background-size: cover;
+}
+
+.partners {
+    padding: 2rem !important;
+    margin-bottom: 3rem !important;
+    color: white;
+    background-color: #12232E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner-images {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner-image {
+    height: 200px;
+    width: 200px;
+    border: 1px transparent;
+    border-radius: 200px;
+    background-position: center;
+    background-size: cover;
+    margin: 1rem !important;
+}
+
+.benifits {
+    padding: 1rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+    color: #12232E;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.benifits-list {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.benifit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin-top: 1rem;
+}
+
+.benifit-icon {
+    width: 50px;
+    height: 50px;
+}
+
+footer {
+    color: white;
+    background-color: #12232E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem !important;
+    margin-top: 3rem !important;
+}
+
+footer li {
+    list-style: none;
+}
+
+footer ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    width: 300px;
+    height: 300px;
+    color: white;
+    background-color: #12232E;
+    border: 2px transparent;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.form-input {
+    color: #4DA8DA;
+    background-color: transparent;
+    border: 3px solid #4DA8DA;
+    border-radius: 25px;
+    padding: .5rem;
+    margin: 1rem;
 }
