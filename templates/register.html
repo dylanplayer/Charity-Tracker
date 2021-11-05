@@ -24,17 +24,17 @@
         </div>
     </nav>
     <main class="login" style="height: 75vh;">
-        <form class="form" action="/login" method="POST">
+        <form class="form" action="/register/" method="POST">
             <h2>Register</h2>
             <div class="row d-flex flex-row align-items-center justify-content-center">
-                <input class="form-input half-input" type="text" placeholder="first">
-                <input class="form-input half-input" type="text" placeholder="last">
+                <input class="form-input half-input" required type="text" placeholder="first" name="first_name">
+                <input class="form-input half-input" required type="text" placeholder="last"  name="last_name">
             </div>
             <div class="row">
-                <input class="form-input" type="email" placeholder="email">
+                <input class="form-input" type="email" required placeholder="email" name="email">
             </div>
             <div class="row">
-                <input class="form-input" type="password" placeholder="password">
+                <input class="form-input" type="password" required placeholder="password" name="password">
             </div>
             <div class="row">
                 <input class="btn" type="submit">
