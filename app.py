@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, make_response
+from flask import Flask, render_template, url_for, request, make_response, session
 from pymongo import MongoClient
 from datetime import datetime
 import bcrypt
@@ -8,45 +8,66 @@ from werkzeug.utils import redirect
 
 app = Flask(__name__)
 
+app.secret_key = os.environ.get('SECRET')
+
 host = os.environ.get('MONGODB_URI')
 salt = os.environ.get('SECRET')
-client = MongoClient()
+client = MongoClient(host=host)
 db = client.get_database('charity-tracker')
 users = db.users
 charities = db.charities
 
 @app.route('/')
 def index():
+    if session.get('email') and session.get('password'):
+        return redirect('/dashboard')
     return render_template('index.html')
 
 @app.route('/login/', methods=['GET','POST'])
 def login():
     if (request.method == 'POST'):
+        email = request.form.get('email')
+        password = bcrypt.hashpw(request.form.get('password').encode('UTF-8'), salt.encode('UTF-8'))
+        user = users.find_one({"$and": [{'email': email}, {'password': password}]})
+        if user:
+            session['email'] = user['email']
+            session['password'] = user['password']
+            return redirect('/dashboard')
+        else:
+            return render_template('login.html')
+    else:
+        return render_template('login.html')
+
+
+@app.route('/register/', methods=['GET','POST'])
+def register():
+    if (request.method == 'POST'):
         user = {
             'first_name': request.form.get('first_name'),
             'last_name': request.form.get('last_name'),
             'email': request.form.get('email'),
-            'password': bcrypt.hashpw(request.form.get('first_name')),
+            'password': bcrypt.hashpw(request.form.get('password').encode('UTF-8'), salt.encode('UTF-8')),
             'created_at': datetime.now(),
         }
         users.insert_one(user)
-        response = make_response(redirect('/dashboard/'))
-        response.set_cookie('_id', users.find_one({'email': request.form.get('email'), 'password': bcrypt.hashpw(request.form.get('first_name'))})._id)
-        return response
+        session['email'] = user['email']
+        session['password'] = user['password']
+        return redirect('/dashboard')
     else:
-        return render_template('login.html')
-    
-
-@app.route('/register/', methods=['GET',])
-def register():
-    return render_template('register.html')
+        return render_template('register.html')
 
 @app.route('/dashboard/')
 def dashboard():
-    if '_id' in request.cookies:
-        _id = request.cookies.get('_id')
+    if session.get('email') and session.get('password'):
+        email = session['email']
+        password = session['password']
+        user = users.find_one({"$and": [{'email': email}, {'password': password}]})
+        if user:
+            return render_template('dashboard.html')
+        else:
+            return redirect('/login')
     else:
-        redirect('/login')
+        return redirect('/login')
 
 if __name__ == '__main__':
     app.run(debug=True)

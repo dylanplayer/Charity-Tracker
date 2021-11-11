@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}<title>Dashboard</title>{% endblock %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Charity Tracker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <input class="form-control search-bar" type="text" id="search-input" placeholder="Search">
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="btn btn-primary">Donate</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <h1>Dashboard</h1>
+            <div class="contributions-container container w-100">
+                <div class="row">
+                    <h2>Contributions</h2>
+                </div>
+                <div class="row text-md-left text-center">
+                    <div class="col-12 col-md-3 offset-md-1">
+                        <h3 class="contribution-label">Lifetime</h3>
+                        <p class="contribution-amount">$14,025</p>
+                    </div>
+                    <div class="col-12 col-md-3 offset-md-1">
+                        <h3 class="contribution-label">Year to Date</h3>
+                        <p class="contribution-amount">$2,025</p>
+                    </div>
+                    <div class="col-12 col-md-3 offset-md-1">
+                        <h3 class="contribution-label">Month to Date</h3>
+                        <p class="contribution-amount">$300</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container w-100 d-flex flex-column align-items-center align-items-lg-start">
+                <div class="row align-self-start">
+                    <h2>Recent</h2>
+                </div>
+                <div class="row recent-donations d-flex flex-column flex-md-row align-items-center align-items-md-start flex-lg-nowrap">
+                    <div class="recent-donation col-12 col-lg-3 col-md-6">
+                        <img src='{{url_for("static", filename="team-seas-banner.png")}}' alt="recent donation banner" width="100%" height="40%">
+                        <div class="d-flex flex-row align-items-baseline justify-content-between mt-1">
+                            <h3>Team Seas</h3>
+                            <p class="recent-donation-amount">$95</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <h4>Impact</h4>
+                            <p class="recent-donation-impact"><em>95 lbs</em> of trash removed from the ocean</p>
+                        </div>
+                    </div>
+
+                    <div class="recent-donation col-12 col-lg-3 col-md-6">
+                        <img src='{{url_for("static", filename="team-seas-banner.png")}}' alt="recent donation banner" width="100%" height="40%">
+                        <div class="d-flex flex-row align-items-baseline justify-content-between mt-1">
+                            <h3>Team Seas</h3>
+                            <p class="recent-donation-amount">$95</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <h4>Impact</h4>
+                            <p class="recent-donation-impact"><em>95 lbs</em> of trash removed from the ocean</p>
+                        </div>
+                    </div>
+                    <div class="recent-donation col-12 col-lg-3 col-md-6">
+                        <img src='{{url_for("static", filename="team-seas-banner.png")}}' alt="recent donation banner" width="100%" height="40%">
+                        <div class="d-flex flex-row align-items-baseline justify-content-between mt-1">
+                            <h3>Team Seas</h3>
+                            <p class="recent-donation-amount">$95</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <h4>Impact</h4>
+                            <p class="recent-donation-impact"><em>95 lbs</em> of trash removed from the ocean</p>
+                        </div>
+                    </div>
+                    <div class="recent-donation col-12 col-lg-3 col-md-6">
+                        <img src='{{url_for("static", filename="team-seas-banner.png")}}' alt="recent donation banner" width="100%" height="40%">
+                        <div class="d-flex flex-row align-items-baseline justify-content-between mt-1">
+                            <h3>Team Seas</h3>
+                            <p class="recent-donation-amount">$95</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <h4>Impact</h4>
+                            <p class="recent-donation-impact"><em>95 lbs</em> of trash removed from the ocean</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

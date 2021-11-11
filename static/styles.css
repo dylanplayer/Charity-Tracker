@@ -4,8 +4,15 @@ body {
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+main {
+    min-height: 70vh;
+}
+
 .nav-link {
     color: white !important;
+}
+
+.nav-item {
     margin-right: 1rem;
 }
 
@@ -167,4 +174,74 @@ footer ul {
 
 .half-input {
     width: 35%;
+}
+
+.search-bar {
+    color: #4DA8DA;
+    background-color: transparent;
+    border: 2px solid #4DA8DA;
+    border-radius: 25px;
+    padding: .2rem;
+    width: 100%;
+    margin-top: .2rem;
+}
+
+.contributions-container {
+    background-color: #4DA8DA;
+    padding: 1rem;
+    border: 1px transparent;
+    border-radius: 25px;
+    color: black;
+}
+
+.contributions-container > div > h2 {
+    font-size: 1.4rem;
+    margin-left: 1rem;
+}
+
+.contribution-label {
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+.contribution-amount {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.recent-donations {
+    gap: .5rem;
+    width: 100%;
+}
+
+.recent-donation {
+    background-color: #c4c4c4;
+    border: 1px transparent;
+    border-radius: 25px;
+    max-width: 300px;
+}
+
+.recent-donation h3 {
+    font-size: 1.2rem;
+}
+
+.recent-donation-amount {
+    font-size: 1.2rem;
+    font-weight: medium;
+    color: #4DA8DA;
+}
+
+.recent-donation h4 {
+    font-size: 1.2rem;
+}
+
+.recent-donation-impact {
+    font-size: 1rem;
+    font-weight: light;
+}
+
+em {
+    color: #4DA8DA;
+    font-style: normal;
+    font-weight: medium;
 }

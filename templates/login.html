@@ -24,13 +24,13 @@
         </div>
     </nav>
     <main class="login" style="height: 75vh;">
-        <form class="form" action="/login/" method="POST">
+        <form class="form" action="/login/" method="POST" enctype="multipart/form-data">
             <h2>Login</h2>
             <div class="row">
-                <input class="form-input" type="email" placeholder="email">
+                <input class="form-input" type="email" name="email" placeholder="email">
             </div>
             <div class="row">
-                <input class="form-input" type="password" placeholder="password">
+                <input class="form-input" type="password" name="password" placeholder="password">
             </div>
             <div class="row">
                 <input class="btn" type="submit">
