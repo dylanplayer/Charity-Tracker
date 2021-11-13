@@ -16,6 +16,7 @@ client = MongoClient(host=host)
 db = client.get_database('charity-tracker')
 users = db.users
 charities = db.charities
+donations = db.donations
 
 @app.route('/')
 def index():
@@ -47,6 +48,7 @@ def register():
             'last_name': request.form.get('last_name'),
             'email': request.form.get('email'),
             'password': bcrypt.hashpw(request.form.get('password').encode('UTF-8'), salt.encode('UTF-8')),
+            'donations': [],
             'created_at': datetime.now(),
         }
         users.insert_one(user)
@@ -62,8 +64,10 @@ def dashboard():
         email = session['email']
         password = session['password']
         user = users.find_one({"$and": [{'email': email}, {'password': password}]})
+        recent_donations=[]
+        
         if user:
-            return render_template('dashboard.html')
+            return render_template('dashboard.html', user=user, recent_donations=recent_donations)
         else:
             return redirect('/login')
     else:
