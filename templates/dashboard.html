@@ -27,71 +27,40 @@
                 <div class="row text-md-left text-center">
                     <div class="col-12 col-md-3 offset-md-1">
                         <h3 class="contribution-label">Lifetime</h3>
-                        <p class="contribution-amount">$14,025</p>
+                        <p class="contribution-amount">${{ user.lifetime }}</p>
                     </div>
                     <div class="col-12 col-md-3 offset-md-1">
                         <h3 class="contribution-label">Year to Date</h3>
-                        <p class="contribution-amount">$2,025</p>
+                        <p class="contribution-amount">${{ user.year_to_date }}</p>
                     </div>
                     <div class="col-12 col-md-3 offset-md-1">
                         <h3 class="contribution-label">Month to Date</h3>
-                        <p class="contribution-amount">$300</p>
+                        <p class="contribution-amount">${{ user.month_to_date }}</p>
                     </div>
                 </div>
             </div>
-            <div class="container w-100 d-flex flex-column align-items-center align-items-lg-start">
-                <div class="row align-self-start">
-                    <h2>Recent</h2>
+            {% if recent_donations|length > 0 %}
+                <div class="container w-100 d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="row align-self-start">
+                        <h2>Recent</h2>
+                    </div>
+                    <div class="row recent-donations d-flex flex-column flex-md-row align-items-center align-items-md-start flex-lg-nowrap">
+                        {% for donation in recent_donations %}
+                            <div class="recent-donation col-12 col-lg-3 col-md-6">
+                                <img src='{{url_for("static", filename=donation.charity.banner)}}' alt="recent donation banner" width="100%" height="40%">
+                                <div class="d-flex flex-row align-items-baseline justify-content-between mt-1">
+                                    <h3>{{ donation.charity }}</h3>
+                                    <p class="recent-donation-amount">{{ donation.amount }}</p>
+                                </div>
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <h4>Impact</h4>
+                                    <p class="recent-donation-impact"><em>{{ donation.impact }}</em> {{ donation.charity.impact_phrase }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div class="row recent-donations d-flex flex-column flex-md-row align-items-center align-items-md-start flex-lg-nowrap">
-                    <div class="recent-donation col-12 col-lg-3 col-md-6">
-                        <img src='{{url_for("static", filename="team-seas-banner.png")}}' alt="recent donation banner" width="100%" height="40%">
-                        <div class="d-flex flex-row align-items-baseline justify-content-between mt-1">
-                            <h3>Team Seas</h3>
-                            <p class="recent-donation-amount">$95</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <h4>Impact</h4>
-                            <p class="recent-donation-impact"><em>95 lbs</em> of trash removed from the ocean</p>
-                        </div>
-                    </div>
-
-                    <div class="recent-donation col-12 col-lg-3 col-md-6">
-                        <img src='{{url_for("static", filename="team-seas-banner.png")}}' alt="recent donation banner" width="100%" height="40%">
-                        <div class="d-flex flex-row align-items-baseline justify-content-between mt-1">
-                            <h3>Team Seas</h3>
-                            <p class="recent-donation-amount">$95</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <h4>Impact</h4>
-                            <p class="recent-donation-impact"><em>95 lbs</em> of trash removed from the ocean</p>
-                        </div>
-                    </div>
-                    <div class="recent-donation col-12 col-lg-3 col-md-6">
-                        <img src='{{url_for("static", filename="team-seas-banner.png")}}' alt="recent donation banner" width="100%" height="40%">
-                        <div class="d-flex flex-row align-items-baseline justify-content-between mt-1">
-                            <h3>Team Seas</h3>
-                            <p class="recent-donation-amount">$95</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <h4>Impact</h4>
-                            <p class="recent-donation-impact"><em>95 lbs</em> of trash removed from the ocean</p>
-                        </div>
-                    </div>
-                    <div class="recent-donation col-12 col-lg-3 col-md-6">
-                        <img src='{{url_for("static", filename="team-seas-banner.png")}}' alt="recent donation banner" width="100%" height="40%">
-                        <div class="d-flex flex-row align-items-baseline justify-content-between mt-1">
-                            <h3>Team Seas</h3>
-                            <p class="recent-donation-amount">$95</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <h4>Impact</h4>
-                            <p class="recent-donation-impact"><em>95 lbs</em> of trash removed from the ocean</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            {% endif %}
         </div>
     </main>
 {% endblock %}
