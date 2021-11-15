@@ -17,15 +17,50 @@
         </ul>
     </div>
 </nav>
-<main>
-    <div class="container w-33">
+<main class="w-100 d-flex flex-column align-items-center justify-content-center">
+    <div class="mt-5 charity-container container d-flex flex-column align-items-center text-center">
         <div class="row">
-            <h1>{{ charity.title }}</h1>
+            <h1>{{ charity.name }}</h1>
         </div>
-        <div class="row">
+        <div class="row text-left">
             <div class="col">
+                <div class="row d-flex flex-column mt-3 mb-3 align-items-center">
+                    <img src='{{ charity.banner }}' height="200px" width="auto">
+                </div>
+                <div class="row d-flex flex-row align-items-baseline justify-content-between">
+                    <h2>Description</h2>
+                    <h2>${{ charity.dollar_per_impact }}/{{ charity.impact_per_dollar }}{{ charity.unit_of_impact }}</h2>
+                </div>
                 <div class="row">
-                    <img src='{{ charity.banner }}' class="">
+                    <p>{{ charity.description }}</p>
+                </div>
+                <div class="row text-center">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <button style="padding: .75rem; border-radius: 25px; padding-left: 2rem; padding-right: 2rem;">$5</button>
+                            </div>
+                            <div class="col">
+                                <button style="padding: .75rem; border-radius: 25px; padding-left: 2rem; padding-right: 2rem;">$10</button>
+                            </div>
+                            <div class="col">
+                                <button style="padding: .75rem; border-radius: 25px; padding-left: 2rem; padding-right: 2rem;">$25</button>
+                            </div>
+                            <div class="col">
+                                <button style="padding: .75rem; border-radius: 25px; padding-left: 2rem; padding-right: 2rem;">$50</button>
+                            </div>
+                        </div>
+                        <div class="row d-flex flex-column align-items-center">
+                            <div class="d-flex flex-row align-items-center justify-content-center w-75 ml-5">
+                                <div class="col d-flex flex-row align-items-baseline">
+                                    <input class="text-center form-input w-75 ml-auto" type="number" value="100" min="1" id="custom-donation">
+                                </div>
+                                <div class="col text-left">
+                                    <button class="btn mb-1" style="padding: .75rem; padding-left: 2rem; padding-right: 2rem; border-radius: 25px;">Donate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

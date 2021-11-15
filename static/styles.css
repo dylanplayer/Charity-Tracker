@@ -150,8 +150,9 @@ footer ul {
 }
 
 .form {
-    width: 300px;
-    height: 350px;
+    width: 50%;
+    max-width: 500px;
+    height: auto;
     color: white;
     background-color: #12232E;
     border: 2px transparent;
@@ -160,7 +161,7 @@ footer ul {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .form-input {
@@ -173,7 +174,9 @@ footer ul {
 }
 
 .half-input {
-    width: 35%;
+    width: 46%;
+    margin-left: .01rem;
+    margin-right: .01rem;
 }
 
 .search-bar {
@@ -244,4 +247,39 @@ em {
     color: #4DA8DA;
     font-style: normal;
     font-weight: medium;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-input {
+    width: 20%;
+}
+
+.charity-container {
+    width: 50%;
+    max-width: 700px;
+    height: auto;
+    color: white;
+    background-color: #12232E;
+    border: 2px transparent;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem !important;
+}
+
+@media only screen and (max-width: 1024px) {
+    .form {
+        width: 95%;
+    }
+    .charity-container {
+        width: 95%;
+    }
 }

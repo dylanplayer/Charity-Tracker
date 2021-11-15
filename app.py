@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, make_response, session
 from pymongo import MongoClient
 from datetime import datetime
+from bson import ObjectId
 import bcrypt
 import os
 
@@ -39,7 +40,6 @@ def login():
     else:
         return render_template('login.html')
 
-
 @app.route('/register/', methods=['GET','POST'])
 def register():
     if (request.method == 'POST'):
@@ -65,13 +65,37 @@ def dashboard():
         password = session['password']
         user = users.find_one({"$and": [{'email': email}, {'password': password}]})
         recent_donations=[]
-        
         if user:
             return render_template('dashboard.html', user=user, recent_donations=recent_donations)
         else:
             return redirect('/login')
     else:
         return redirect('/login')
+
+@app.route('/charity/<id>', methods=['GET'])
+def get_charity(id):
+    charity = charities.find_one({'_id': ObjectId(id)})
+    return render_template('charity.html', charity=charity) 
+
+@app.route('/charity/', methods=['POST'])
+def create_charity():
+    charity = {
+        'name': request.form.get('name'),
+        'banner': request.form.get('banner'),
+        'dollar_per_impact': request.form.get('dollar_per_impact'),
+        'impact_per_dollar': request.form.get('impact_per_dollar'),
+        'unit_of_impact': request.form.get('unit_of_impact'),
+        'impact_sentance': request.form.get('impact_sentance'),
+        'description': request.form.get('description'),
+        'donations': [],
+        'created_at': datetime.now(),
+    }
+    charities.insert_one(charity)
+    return redirect('/charity/' + {charities.find_one({'created_at': charity['created_at']})._id})
+
+@app.route('/charity/new', methods=['GET'])
+def get_create_charity_form():
+    return render_template('new_charity_form.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
