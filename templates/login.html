@@ -1,27 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}<title>Login</title>{% endblock %}
 {% block content %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Charity Tracker</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Partners</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <button>Get Started</button>
-                </li>
-            </ul>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark align-items-center pb-0">
+        <a class="navbar-brand mb-2" href="/">Charity Tracker</a>
+        <ul class="ml-auto d-flex flex-row align-items-center">
+            <li class="nav-item">
+                <a class="nav-link" href="/login/">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="/register/" class="btn btn-primary">Get Started</a>
+            </li>
+        </ul>
     </nav>
     <main class="login" style="height: 75vh;">
         <form class="form" action="/login/" method="POST" enctype="multipart/form-data">
