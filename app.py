@@ -21,8 +21,6 @@ donations = db.donations
 
 @app.route('/')
 def index():
-    if session.get('email') and session.get('password'):
-        return redirect('/dashboard')
     return render_template('index.html')
 
 @app.route('/login/', methods=['GET','POST'])
@@ -38,7 +36,16 @@ def login():
         else:
             return render_template('login.html')
     else:
-        return render_template('login.html')
+        if session.get('email') and session.get('password'):
+            email = session['email']
+            password = session['password']
+            user = users.find_one({"$and": [{'email': email}, {'password': password}]})
+            if user:
+                return redirect('/dashboard')
+            else:
+                return render_template('login.html')
+        else:
+            return render_template('login.html')
 
 @app.route('/register/', methods=['GET','POST'])
 def register():
@@ -56,7 +63,16 @@ def register():
         session['password'] = user['password']
         return redirect('/dashboard/')
     else:
-        return render_template('register.html')
+        if session.get('email') and session.get('password'):
+            email = session['email']
+            password = session['password']
+            user = users.find_one({"$and": [{'email': email}, {'password': password}]})
+            if user:
+                return redirect('/dashboard')
+            else:
+                return render_template('register.html')
+        else:
+            return render_template('register.html')
 
 @app.route('/dashboard/')
 def dashboard():
