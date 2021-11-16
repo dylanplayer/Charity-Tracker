@@ -97,5 +97,10 @@ def create_charity():
 def get_create_charity_form():
     return render_template('new_charity_form.html')
 
+@app.route('/charities/', methods=['GET'])
+def charitiesList():
+    if request.method == 'GET':
+        return render_template('charities.html', charities=charities.find())
+
 if __name__ == '__main__':
     app.run(debug=True)
