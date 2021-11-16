@@ -125,7 +125,7 @@ def create_charity():
         'created_at': datetime.now(),
     }
     charities.insert_one(charity)
-    return redirect('/charity/' + {charities.find_one({'created_at': charity['created_at']})._id})
+    return redirect('/charity/' + str(charities.find_one({'created_at': charity['created_at']})['_id']))
 
 @app.route('/charity/new', methods=['GET'])
 def get_create_charity_form():
@@ -159,6 +159,12 @@ def donate():
             {'$push': {'donations': donation['_id']}}
         )
         return redirect('/dashboard/')
+
+@app.route('/logout/')
+def logout():
+    session['email'] = ''
+    session['password'] = ''
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

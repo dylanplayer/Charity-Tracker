@@ -214,14 +214,15 @@ footer ul {
 
 .recent-donations {
     gap: .5rem;
-    width: 100%;
+    justify-content: center;
 }
 
 .recent-donation {
     background-color: #c4c4c4;
     border: 1px transparent;
     border-radius: 25px;
-    max-width: 300px;
+    max-width: 350px;
+    height: 350px;
 }
 
 .recent-donation h3 {
